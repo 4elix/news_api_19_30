@@ -41,7 +41,7 @@ class NewsViewSet(ModelViewSet):
     @action(detail=False, methods=['get'], url_path=r'by_category/(?P<slug>[^/.]+)')
     def by_category(self, request, slug=None):
         try:
-            category = Categories.objects.get(slug=slug)
+            category = Categories.objects.get(category_slug=slug)
         except Categories.DoesNotExist:
             return Response({"detail": "Категория не найдена"}, status=status.HTTP_404_NOT_FOUND)
 
